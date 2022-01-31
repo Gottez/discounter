@@ -38,7 +38,39 @@ def test_nomember4():
     assert result == (1/2)
 
 
-def test_expect_error():
-    data = ("A", True)
-    with pytest.raises(ValueError):
-        calculate_discount(data)
+def test_expect_error1():
+    with pytest.raises(ValueError) as error_info:
+        calculate_discount(0, False)
+    assert str(error_info.value) == "amount has to be greater than 0 and less or equal to 10"
+    assert error_info.type == ValueError
+
+def test_expect_error2():
+    with pytest.raises(ValueError) as error_info:
+        calculate_discount(11, False)
+    assert str(error_info.value) == "amount has to be greater than 0 and less or equal to 10"
+    assert error_info.type == ValueError
+
+def test_expect_error3():
+    with pytest.raises(ValueError) as error_info:
+        calculate_discount(0, True)
+    assert str(error_info.value) == "amount has to be greater than 0 and less or equal to 10"
+    assert error_info.type == ValueError
+
+def test_expect_error4():
+    with pytest.raises(ValueError) as error_info:
+        calculate_discount(11, True)
+    assert str(error_info.value) == "amount has to be greater than 0 and less or equal to 10"
+    assert error_info.type == ValueError
+
+
+def test_expect_error5():
+    with pytest.raises(ValueError) as error_info:
+        calculate_discount("A", True)
+    assert str(error_info.value) == "amount must be an int"
+    assert error_info.type == ValueError
+
+def test_expect_error6():
+    with pytest.raises(ValueError) as error_info:
+        calculate_discount("A", False)
+    assert str(error_info.value) == "amount must be an int"
+    assert error_info.type == ValueError
