@@ -59,7 +59,7 @@ pytest.param(Decimal("79"), date(2022, 4, 18), Decimal("71.1"), id="vEp2.2.5"),
 #rabatt = 0% vEP2-3 : [(2022, 4, 19), …, max_date]
 pytest.param(Decimal("79"), date(2022, 4, 19), Decimal("79"), id="vEp2.3.1"),
 
-pytest.param(Decimal("79"), date(2022, 4, 27), Decimal("79"), id="vEp2.3.2")
+pytest.param(Decimal("79"), date(2022, 4, 27), Decimal("79"), id="vEp2.3.2"),
 
 
 #test inverted date rabatt = 0%
