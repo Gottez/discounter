@@ -59,7 +59,11 @@ pytest.param(Decimal("79"), date(2022, 4, 18), Decimal("71.1"), id="vEp2.2.5"),
 #rabatt = 0% vEP2-3 : [(2022, 4, 19), …, max_date]
 pytest.param(Decimal("79"), date(2022, 4, 19), Decimal("79"), id="vEp2.3.1"),
 
-pytest.param(Decimal("79"), date(2022, 4, 27), Decimal("79"), id="vEp2.3.2")]
+pytest.param(Decimal("79"), date(2022, 4, 27), Decimal("79"), id="vEp2.3.2")
+
+
+#test inverted date rabatt = 0%
+pytest.param(Decimal("79"), date(2022, 12, 4), Decimal("79"), id="vEp3.1.1")]
 
 @pytest.mark.parametrize("total,day,expected_price", price_test_data)
 def test_valid_price(total, day, expected_price):
@@ -84,13 +88,13 @@ def test_error3():
         calculate_price(10, date(2022, 4, 12))
     assert str(error_info.value) == "amount must be a two digit decimal value"
     assert error_info.type == ValueError
-    
+
 def test_error4():
     with pytest.raises(ValueError) as error_info:
         calculate_price(Decimal("10.1"), "test")
     assert str(error_info.value) == "date is not valid"
     assert error_info.type == ValueError
-    
+
 def test_error5():
     with pytest.raises(ValueError) as error_info:
         calculate_price(Decimal("10.1"), "")
@@ -102,10 +106,9 @@ def test_error6():
         calculate_price("", date(2022, 4, 12))
     assert str(error_info.value) == "amount must be a two digit decimal value"
     assert error_info.type == ValueError
-    
+
 def test_error7():
     with pytest.raises(ValueError) as error_info:
         calculate_price(Decimal("-4.2"), date(2022, 4, 12))
     assert str(error_info.value) == "negative amounts are not allowed"
     assert error_info.type == ValueError
-
