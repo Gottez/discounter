@@ -102,3 +102,10 @@ def test_error6():
         calculate_price("", date(2022, 4, 12))
     assert str(error_info.value) == "amount must be a two digit decimal value"
     assert error_info.type == ValueError
+    
+def test_error7():
+    with pytest.raises(ValueError) as error_info:
+        calculate_price(Decimal("-4.2"), date(2022, 4, 12))
+    assert str(error_info.value) == "negative amounts are not allowed"
+    assert error_info.type == ValueError
+
