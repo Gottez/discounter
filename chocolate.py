@@ -45,7 +45,7 @@ pytest.param(Decimal("79"), date(2022, 4, 5), Decimal("79"), id="vEp2.1.1"),
 
 pytest.param(Decimal("79"), date(2022, 4, 8), Decimal("79"), id="vEp2.1.2"),
 
-#rabatt = 15% - vEP2-1 : [min_date, …, (2022, 4, 8)]
+#rabatt = 15% - vEP2-2 : [min_date, …, (2022, 4, 8)]
 pytest.param(Decimal("79"), date(2022, 4, 9), Decimal("71.1"), id="vEp2.2.1"),
 
 pytest.param(Decimal("79"), date(2022, 4, 10), Decimal("71.1"), id="vEp2.2.2"),
